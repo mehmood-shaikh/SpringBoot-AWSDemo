@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
 import com.amazonaws.auth.AWSCredentials;
@@ -47,11 +48,13 @@ public class S3BucketConfig {
 	}
 
 	@Bean
+	@Primary
 	public AWSCredentials amazonAWSCredentials() {
 		return new BasicAWSCredentials(awsAccessKey, awsSecretKey);
 	}
 
 	@Bean
+	@Primary
 	public AWSCredentialsProvider amazonAWSCredentialsProvider(AWSCredentials amazonAWSCredentials) {
 		return new AWSStaticCredentialsProvider(amazonAWSCredentials);
 

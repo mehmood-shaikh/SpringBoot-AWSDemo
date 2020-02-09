@@ -4,6 +4,7 @@ import java.util.Set;
 
 import com.ms.aws.exception.IdNotFoundException;
 import com.ms.aws.model.DogDynamoDB;
+import com.ms.aws.model.RandomDogFromAPI;
 
 public interface DogService {
 	
@@ -12,6 +13,8 @@ public interface DogService {
 	boolean deleteDog(String id) throws IdNotFoundException;
 
 	Set<String> getDistinctBreedNames();
+	
+	DogDynamoDB uploadToAWS(RandomDogFromAPI publicApiDogResponse);
 	
 
 }
